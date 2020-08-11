@@ -1,8 +1,3 @@
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
 public class PasswordParameters {
     private String userName;
     private String masterPassword;
@@ -32,5 +27,41 @@ public class PasswordParameters {
         this.largeLetters = largeLetters;
         this.numbers = numbers;
         this.specialSigns = specialSigns;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getMasterPassword() {
+        return masterPassword;
+    }
+
+    public String getAppName() {
+        return appName;
+    }
+
+    public String getAppAddress() {
+        return appAddress;
+    }
+
+    public int getNumberOfSigns() {
+        return numberOfSigns;
+    }
+
+    public boolean isSmallLetters() {
+        return smallLetters;
+    }
+
+    public boolean isLargeLetters() {
+        return largeLetters;
+    }
+
+    public boolean isNumbers() {
+        return numbers;
+    }
+
+    public boolean isSpecialSigns() {
+        return specialSigns;
     }
 }

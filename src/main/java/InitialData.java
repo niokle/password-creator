@@ -1,15 +1,13 @@
-import lombok.Getter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-@Getter
 public class InitialData {
     private List<Character> smallLetters = new ArrayList<>();
     private List<Character> largeLetters = new ArrayList<>();
     private List<Character> numbers = new ArrayList<>();
     private List<Character> specialSigns = new ArrayList<>();
-    public List<Character> tableOfSigns = new ArrayList<>();
+    private List<Character> tableOfSigns = new ArrayList<>();
 
     public InitialData(boolean isSmallLetters, boolean isLargeLetters, boolean isNumbers, boolean isSpecialSigns) {
         fillSmallLetters(isSmallLetters);
@@ -17,6 +15,10 @@ public class InitialData {
         fillNumbers(isNumbers);
         fillSpecialSigns(isSpecialSigns);
         fillTableOfSigns();
+    }
+
+    public List<Character> getTableOfSigns() {
+        return tableOfSigns;
     }
 
     private void fillSmallLetters(boolean isSmallLetters) {
