@@ -31,7 +31,7 @@ public class InitialData {
 
     private void fillLargeLetters(boolean isLargeLetters) {
         if (isLargeLetters) {
-            for (char c = 'A'; c <= 'Z'; c++) {
+            for (char c = 'Z'; c >= 'A'; c--) {
                 largeLetters.add(c);
             }
         }
