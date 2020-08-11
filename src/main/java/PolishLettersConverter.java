@@ -1,5 +1,5 @@
 public class PolishLettersConverter {
-    public static char convert(char c) {
+    private static char charConvert(char c) {
         switch (c) {
             case 'Ą':
                 return 'A';
@@ -38,5 +38,13 @@ public class PolishLettersConverter {
             default:
                 return c;
         }
+    }
+
+    public static String convert(String string) {
+        String result = "";
+        for (char c : string.toCharArray()) {
+            result += charConvert(c);
+        }
+        return result;
     }
 }
