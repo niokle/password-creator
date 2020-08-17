@@ -1,10 +1,15 @@
+package service;
+
+import initial.*;
+import org.springframework.stereotype.Service;
 import java.util.List;
 
-public class Service {
+@Service
+public class PasswordService {
     private PasswordParameters passwordParameters;
     private InitialData initialData;
 
-    public Service(PasswordParameters passwordParameters, InitialData initialData) {
+    public PasswordService(PasswordParameters passwordParameters, InitialData initialData) {
         this.passwordParameters = passwordParameters;
         this.initialData = initialData;
     }

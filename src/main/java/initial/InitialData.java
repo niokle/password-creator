@@ -1,7 +1,12 @@
+package initial;
+
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+@Component
 public class InitialData {
     private List<Character> smallLetters = new ArrayList<>();
     private List<Character> largeLetters = new ArrayList<>();
@@ -78,5 +83,6 @@ public class InitialData {
         }
     }
 }
+
 
 

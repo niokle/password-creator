@@ -1,3 +1,8 @@
+package initial;
+
+import org.springframework.stereotype.Component;
+
+@Component
 public class PasswordParameters {
     private String userName;
     private String masterPassword;

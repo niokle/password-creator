@@ -1,3 +1,5 @@
+package converter;
+
 public class PolishLettersConverter {
     private static char charConvert(char c) {
         switch (c) {
