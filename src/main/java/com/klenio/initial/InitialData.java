@@ -1,11 +1,14 @@
-package initial;
+package com.klenio.initial;
 
+import com.klenio.domain.InputParameters;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+@NoArgsConstructor
 @Component
 public class InitialData {
     private List<Character> smallLetters = new ArrayList<>();
@@ -14,11 +17,12 @@ public class InitialData {
     private List<Character> specialSigns = new ArrayList<>();
     private List<Character> tableOfSigns = new ArrayList<>();
 
-    public InitialData(boolean isSmallLetters, boolean isLargeLetters, boolean isNumbers, boolean isSpecialSigns) {
-        fillSmallLetters(isSmallLetters);
-        fillLargeLetters(isLargeLetters);
-        fillNumbers(isNumbers);
-        fillSpecialSigns(isSpecialSigns);
+
+    public InitialData(InputParameters inputParameters) {
+        fillSmallLetters(inputParameters.isSmallLetters());
+        fillLargeLetters(inputParameters.isLargeLetters());
+        fillNumbers(inputParameters.isNumbers());
+        fillSpecialSigns(inputParameters.isSpecialSigns());
         fillTableOfSigns();
     }
 

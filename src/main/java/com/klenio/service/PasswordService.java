@@ -1,25 +1,26 @@
-package service;
+package com.klenio.service;
 
-import initial.*;
+import com.klenio.domain.InputParameters;
+import com.klenio.initial.*;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
 public class PasswordService {
-    private PasswordParameters passwordParameters;
+    private InputParameters inputParameters;
     private InitialData initialData;
 
-    public PasswordService(PasswordParameters passwordParameters, InitialData initialData) {
-        this.passwordParameters = passwordParameters;
+    public PasswordService(InputParameters inputParameters, InitialData initialData) {
+        this.inputParameters = inputParameters;
         this.initialData = initialData;
     }
 
     public String getPassword() {
-        String userName = passwordParameters.getUserName();
-        String masterPassword = passwordParameters.getMasterPassword();
-        String appName = passwordParameters.getAppName();
-        String appAddress = passwordParameters.getAppAddress();
-        int numberOfSigns = passwordParameters.getNumberOfSigns();
+        String userName = inputParameters.getUserName();
+        String masterPassword = inputParameters.getMasterPassword();
+        String appName = inputParameters.getAppName();
+        String appAddress = inputParameters.getAppAddress();
+        int numberOfSigns = inputParameters.getNumberOfSigns();
 
         List<Character> tableOfSigns = initialData.getTableOfSigns();
 

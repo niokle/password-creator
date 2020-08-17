@@ -1,4 +1,4 @@
-package converter;
+package com.klenio.converter;
 
 public class PolishLettersConverter {
     private static char charConvert(char c) {
