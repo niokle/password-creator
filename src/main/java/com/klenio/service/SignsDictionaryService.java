@@ -10,7 +10,7 @@ import java.util.List;
 
 @NoArgsConstructor
 @Component
-public class InitialData {
+public class DictionarySignsService {
     private List<Character> smallLetters = new ArrayList<>();
     private List<Character> largeLetters = new ArrayList<>();
     private List<Character> numbers = new ArrayList<>();
@@ -18,7 +18,7 @@ public class InitialData {
     private List<Character> tableOfSigns = new ArrayList<>();
 
 
-    public InitialData(InputParameters inputParameters) {
+    public DictionarySignsService(InputParameters inputParameters) {
         fillSmallLetters(inputParameters.isSmallLetters());
         fillLargeLetters(inputParameters.isLargeLetters());
         fillNumbers(inputParameters.isNumbers());
