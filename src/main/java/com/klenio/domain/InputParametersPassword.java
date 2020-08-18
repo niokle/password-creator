@@ -9,14 +9,10 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @Getter
 @Component
-public class InputParameters {
+public class InputParametersPassword {
     private String userName;
     private String masterPassword;
     private String appName;
     private String appAddress;
     private int numberOfSigns;
-    private boolean smallLetters;
-    private boolean largeLetters;
-    private boolean numbers;
-    private boolean specialSigns;
 }

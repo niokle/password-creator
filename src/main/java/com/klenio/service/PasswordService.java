@@ -1,28 +1,28 @@
 package com.klenio.service;
 
-import com.klenio.domain.InputParameters;
-import com.klenio.initial.*;
+import com.klenio.domain.InputParametersPassword;
+import com.klenio.dto.InputParametersDto;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
 public class PasswordService {
-    private InputParameters inputParameters;
-    private InitialData initialData;
+    private InputParametersPassword inputParametersPassword;
+    private SignsDictionaryService signsDictionaryService;
 
-    public PasswordService(InputParameters inputParameters, InitialData initialData) {
-        this.inputParameters = inputParameters;
-        this.initialData = initialData;
+    public PasswordService(InputParametersPassword inputParametersPassword, SignsDictionaryService signsDictionaryService) {
+        this.inputParametersPassword = inputParametersPassword;
+        this.signsDictionaryService = signsDictionaryService;
     }
 
     public String getPassword() {
-        String userName = inputParameters.getUserName();
-        String masterPassword = inputParameters.getMasterPassword();
-        String appName = inputParameters.getAppName();
-        String appAddress = inputParameters.getAppAddress();
-        int numberOfSigns = inputParameters.getNumberOfSigns();
+        String userName = inputParametersPassword.getUserName();
+        String masterPassword = inputParametersPassword.getMasterPassword();
+        String appName = inputParametersPassword.getAppName();
+        String appAddress = inputParametersPassword.getAppAddress();
+        int numberOfSigns = inputParametersPassword.getNumberOfSigns();
 
-        List<Character> tableOfSigns = initialData.getTableOfSigns();
+        List<Character> tableOfSigns = signsDictionaryService.getTableOfSigns();
 
         String password = "";
 

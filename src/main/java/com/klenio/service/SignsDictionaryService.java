@@ -1,6 +1,7 @@
-package com.klenio.initial;
+package com.klenio.service;
 
-import com.klenio.domain.InputParameters;
+import com.klenio.domain.InputParametersDictionary;
+import com.klenio.dto.InputParametersDto;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +11,7 @@ import java.util.List;
 
 @NoArgsConstructor
 @Component
-public class DictionarySignsService {
+public class SignsDictionaryService {
     private List<Character> smallLetters = new ArrayList<>();
     private List<Character> largeLetters = new ArrayList<>();
     private List<Character> numbers = new ArrayList<>();
@@ -18,11 +19,11 @@ public class DictionarySignsService {
     private List<Character> tableOfSigns = new ArrayList<>();
 
 
-    public DictionarySignsService(InputParameters inputParameters) {
-        fillSmallLetters(inputParameters.isSmallLetters());
-        fillLargeLetters(inputParameters.isLargeLetters());
-        fillNumbers(inputParameters.isNumbers());
-        fillSpecialSigns(inputParameters.isSpecialSigns());
+    public SignsDictionaryService(InputParametersDictionary inputParametersDictionary) {
+        fillSmallLetters(inputParametersDictionary.isSmallLetters());
+        fillLargeLetters(inputParametersDictionary.isLargeLetters());
+        fillNumbers(inputParametersDictionary.isNumbers());
+        fillSpecialSigns(inputParametersDictionary.isSpecialSigns());
         fillTableOfSigns();
     }
 
