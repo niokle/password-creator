@@ -27,7 +27,7 @@ public class PasswordService {
         String password = "";
 
         for (int i = 0; i < numberOfSigns; i++) {
-            password += " ";
+            password += tableOfSigns.get(correctNumber(i, tableOfSigns.size() -1));
         }
 
         password = stringsCont(password, masterPassword);
