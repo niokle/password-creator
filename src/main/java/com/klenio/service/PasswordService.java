@@ -36,7 +36,7 @@ public class PasswordService {
 
         String password = "";
         for (Integer i : passwordMatrix) {
-            password += tableOfSigns.get(getCorrectNumber(i, tableOfSigns.size() - 1));
+            password += tableOfSigns.get(getCorrectNumber(i, tableOfSigns.size()));
         }
         return password;
     }
