@@ -1,12 +1,9 @@
 package com.klenio.service;
 
 import com.klenio.domain.InputParametersDictionary;
-import com.klenio.dto.InputParametersDto;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static com.klenio.function.CorrectNumber.getCorrectNumber;
@@ -27,8 +24,6 @@ public class SignsDictionaryService {
         fillNumbers(inputParametersDictionary.isNumbers());
         fillSpecialSigns(inputParametersDictionary.isSpecialSigns());
         fillTableOfSigns();
-        //todo
-        System.out.println(tableOfSigns);
     }
 
     public List<Character> getTableOfSigns() {
