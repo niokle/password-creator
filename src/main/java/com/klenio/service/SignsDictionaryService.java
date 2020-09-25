@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static com.klenio.function.CorrectNumber.getCorrectNumber;
+
 @NoArgsConstructor
 @Component
 public class SignsDictionaryService {
@@ -66,25 +68,11 @@ public class SignsDictionaryService {
     }
 
     private void fillTableOfSigns() {
-        List<Integer> sizes = new ArrayList<>();
-        sizes.add(smallLetters.size());
-        sizes.add(largeLetters.size());
-        sizes.add(numbers.size());
-        sizes.add(specialSigns.size());
-
-        for (int i = 0; i < Collections.max(sizes); i++) {
-            if (i < smallLetters.size() - 1) {
-                tableOfSigns.add(smallLetters.get(i));
-            }
-            if (i < largeLetters.size() - 1) {
-                tableOfSigns.add(largeLetters.get(i));
-            }
-            if (i < numbers.size() - 1) {
-                tableOfSigns.add(numbers.get(i));
-            }
-            if (i < specialSigns.size() - 1) {
-                tableOfSigns.add(specialSigns.get(i));
-            }
+        for (int i = 0; i < 120; i++) {
+            tableOfSigns.add(smallLetters.get(getCorrectNumber(i, smallLetters.size() - 1)));
+            tableOfSigns.add(largeLetters.get(getCorrectNumber(i, largeLetters.size() - 1)));
+            tableOfSigns.add(numbers.get(getCorrectNumber(i, numbers.size() - 1)));
+            tableOfSigns.add(specialSigns.get(getCorrectNumber(i, specialSigns.size() - 1)));
         }
     }
 }
