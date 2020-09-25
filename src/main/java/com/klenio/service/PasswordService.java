@@ -1,7 +1,6 @@
 package com.klenio.service;
 
 import com.klenio.domain.InputParametersPassword;
-import com.klenio.dto.InputParametersDto;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -43,17 +42,29 @@ public class PasswordService {
     private List<Integer> getPasswordSizeMatrix(int numberOfSigns) {
         List<Integer> result = new ArrayList<>();
         for (int i = 0; i < numberOfSigns; i++) {
-            result.add((int) (i * Math.PI + numberOfSigns * Math.PI));
+            result.add(getIntCalc1(numberOfSigns, i));
         }
+        //todo
+        System.out.println(result);
         return result;
+    }
+
+    private int getIntCalc1(int numberOfSigns, int i) {
+        return (int) (i * Math.PI - numberOfSigns < 0 ? i * Math.PI + numberOfSigns : i * Math.PI - numberOfSigns);
     }
 
     private List<Integer> codingPasswordMatrix(List<Integer> passwordMatrix, String code) {
         List<Integer> result = passwordMatrix;
         for (char c : code.toCharArray()) {
-            result = result.stream().map(val -> val + c * code.length()).collect(Collectors.toList());
+            result = result.stream().map(val -> getIntCalc2(code, c, val)).collect(Collectors.toList());
         }
+        //todo
+        System.out.println(result);
         return result;
+    }
+
+    private int getIntCalc2(String code, char c, Integer val) {
+        return val % 2 == 0 || val - c + code.chars().sum() < 0 ? val + c + code.chars().sum() : val - c + code.chars().sum();
     }
 
     private int correctNumber(int number, int maxNumber) {
