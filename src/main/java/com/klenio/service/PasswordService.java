@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.klenio.function.CorrectNumber.getCorrectNumber;
+
 @Service
 public class PasswordService {
     private InputParametersPassword inputParametersPassword;
@@ -34,7 +36,7 @@ public class PasswordService {
 
         String password = "";
         for (Integer i : passwordMatrix) {
-            password += tableOfSigns.get(correctNumber(i, tableOfSigns.size() - 1));
+            password += tableOfSigns.get(getCorrectNumber(i, tableOfSigns.size() - 1));
         }
         return password;
     }
@@ -44,8 +46,6 @@ public class PasswordService {
         for (int i = 0; i < numberOfSigns; i++) {
             result.add(getIntCalc1(numberOfSigns, i));
         }
-        //todo
-        System.out.println(result);
         return result;
     }
 
@@ -58,16 +58,10 @@ public class PasswordService {
         for (char c : code.toCharArray()) {
             result = result.stream().map(val -> getIntCalc2(code, c, val)).collect(Collectors.toList());
         }
-        //todo
-        System.out.println(result);
         return result;
     }
 
     private int getIntCalc2(String code, char c, Integer val) {
         return val % 2 == 0 || val - c + code.chars().sum() < 0 ? val + c + code.chars().sum() : val - c + code.chars().sum();
-    }
-
-    private int correctNumber(int number, int maxNumber) {
-        return number%maxNumber == 0 ? maxNumber : number%maxNumber;
     }
 }
