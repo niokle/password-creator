@@ -27,6 +27,8 @@ public class SignsDictionaryService {
         fillNumbers(inputParametersDictionary.isNumbers());
         fillSpecialSigns(inputParametersDictionary.isSpecialSigns());
         fillTableOfSigns();
+        //todo
+        System.out.println(tableOfSigns);
     }
 
     public List<Character> getTableOfSigns() {
@@ -69,10 +71,18 @@ public class SignsDictionaryService {
 
     private void fillTableOfSigns() {
         for (int i = 0; i < 120; i++) {
-            tableOfSigns.add(smallLetters.get(getCorrectNumber(i, smallLetters.size())));
-            tableOfSigns.add(largeLetters.get(getCorrectNumber(i, largeLetters.size())));
-            tableOfSigns.add(numbers.get(getCorrectNumber(i, numbers.size())));
-            tableOfSigns.add(specialSigns.get(getCorrectNumber(i, specialSigns.size())));
+            if (smallLetters.size() > 0) {
+                tableOfSigns.add(smallLetters.get(getCorrectNumber(i, smallLetters.size())));
+            }
+            if (largeLetters.size() > 0) {
+                tableOfSigns.add(largeLetters.get(getCorrectNumber(i, largeLetters.size())));
+            }
+            if (numbers.size() > 0) {
+                tableOfSigns.add(numbers.get(getCorrectNumber(i, numbers.size())));
+            }
+            if (specialSigns.size() > 0) {
+                tableOfSigns.add(specialSigns.get(getCorrectNumber(i, specialSigns.size())));
+            }
         }
     }
 }
