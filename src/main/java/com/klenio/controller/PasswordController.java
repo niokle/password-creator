@@ -1,6 +1,7 @@
 package com.klenio.controller;
 
 import com.klenio.dto.InputParametersDto;
+import com.klenio.exception.EmptyDictionaryException;
 import com.klenio.mapper.DtoToDomainMapper;
 import com.klenio.service.SignsDictionaryService;
 import com.klenio.service.PasswordService;
@@ -16,7 +17,7 @@ public class PasswordController {
 
     @PostMapping("/pass")
     @ResponseBody
-    public String getPassword(@RequestBody InputParametersDto inputParametersDto, DtoToDomainMapper dtoToDomainMapper) {
+    public String getPassword(@RequestBody InputParametersDto inputParametersDto, DtoToDomainMapper dtoToDomainMapper) throws EmptyDictionaryException {
         SignsDictionaryService signsDictionaryService = new SignsDictionaryService(dtoToDomainMapper.inputParametersDtoToInputParametersDictionary(inputParametersDto));
         PasswordService passwordService = new PasswordService(dtoToDomainMapper.inputParametersDtoToInputParametersPassword(inputParametersDto), signsDictionaryService);
         logger.info("Get password");

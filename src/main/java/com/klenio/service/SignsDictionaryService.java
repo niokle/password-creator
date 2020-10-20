@@ -1,6 +1,7 @@
 package com.klenio.service;
 
 import com.klenio.domain.InputParametersDictionary;
+import com.klenio.exception.EmptyDictionaryException;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 import java.util.ArrayList;
@@ -18,16 +19,25 @@ public class SignsDictionaryService {
     private List<Character> tableOfSigns = new ArrayList<>();
 
 
-    public SignsDictionaryService(InputParametersDictionary inputParametersDictionary) {
-        fillSmallLetters(inputParametersDictionary.isSmallLetters());
-        fillLargeLetters(inputParametersDictionary.isLargeLetters());
-        fillNumbers(inputParametersDictionary.isNumbers());
-        fillSpecialSigns(inputParametersDictionary.isSpecialSigns());
-        fillTableOfSigns();
+    public SignsDictionaryService(InputParametersDictionary inputParametersDictionary) throws EmptyDictionaryException {
+        if (isNotDictionaryEmpty(inputParametersDictionary)) {
+            fillSmallLetters(inputParametersDictionary.isSmallLetters());
+            fillLargeLetters(inputParametersDictionary.isLargeLetters());
+            fillNumbers(inputParametersDictionary.isNumbers());
+            fillSpecialSigns(inputParametersDictionary.isSpecialSigns());
+            fillTableOfSigns();
+        } else {
+            throw new EmptyDictionaryException("Dictionary is empty");
+        }
     }
 
     public List<Character> getTableOfSigns() {
         return tableOfSigns;
+    }
+
+    private boolean isNotDictionaryEmpty(InputParametersDictionary inputParametersDictionary) {
+        return inputParametersDictionary.isLargeLetters() || inputParametersDictionary.isSmallLetters()
+                || inputParametersDictionary.isNumbers() || inputParametersDictionary.isSpecialSigns();
     }
 
     private void fillSmallLetters(boolean isSmallLetters) {
