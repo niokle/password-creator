@@ -1,9 +1,12 @@
 package com.klenio.service;
 
 import com.klenio.domain.InputParametersDictionary;
+import com.klenio.exception.EmptyDictionaryException;
 import junit.framework.TestCase;
 import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -15,7 +18,7 @@ import java.util.List;
 public class SignsDictionaryServiceTest extends TestCase {
 
     @Test
-    public void getTableOfSigns_TrueTrueTrueTrue() {
+    public void getTableOfSigns_TrueTrueTrueTrue() throws EmptyDictionaryException {
         //given
         InputParametersDictionary inputParametersDictionary = new InputParametersDictionary(true, true, true, true);
         SignsDictionaryService signsDictionaryService = new SignsDictionaryService(inputParametersDictionary);
@@ -28,7 +31,7 @@ public class SignsDictionaryServiceTest extends TestCase {
       }
 
     @Test
-    public void getTableOfSigns_FalseTrueTrueTrue() {
+    public void getTableOfSigns_FalseTrueTrueTrue() throws EmptyDictionaryException {
         //given
         InputParametersDictionary inputParametersDictionary = new InputParametersDictionary(false, true, true, true);
         SignsDictionaryService signsDictionaryService = new SignsDictionaryService(inputParametersDictionary);
@@ -41,7 +44,7 @@ public class SignsDictionaryServiceTest extends TestCase {
     }
 
     @Test
-    public void getTableOfSigns_FalseFalseTrueTrue() {
+    public void getTableOfSigns_FalseFalseTrueTrue() throws EmptyDictionaryException {
         //given
         InputParametersDictionary inputParametersDictionary = new InputParametersDictionary(false, false, true, true);
         SignsDictionaryService signsDictionaryService = new SignsDictionaryService(inputParametersDictionary);
@@ -54,7 +57,7 @@ public class SignsDictionaryServiceTest extends TestCase {
     }
 
     @Test
-    public void getTableOfSigns_FalseFalseFalseTrue() {
+    public void getTableOfSigns_FalseFalseFalseTrue() throws EmptyDictionaryException {
         //given
         InputParametersDictionary inputParametersDictionary = new InputParametersDictionary(false, false, false, true);
         SignsDictionaryService signsDictionaryService = new SignsDictionaryService(inputParametersDictionary);
@@ -66,16 +69,21 @@ public class SignsDictionaryServiceTest extends TestCase {
         Assert.assertArrayEquals(new char[]{'!', '#', '$', '%'}, new char[]{result.get(0), result.get(1), result.get(2), result.get(3)});
     }
 
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
+
     @Test
-    public void getTableOfSigns_FalseFalseFalseFalse() {
+    public void getTableOfSigns_FalseFalseFalseFalse() throws EmptyDictionaryException {
         //given
+        expectedException.expect(Exception.class);
+        expectedException.expectMessage("Dictionary is empty");
         InputParametersDictionary inputParametersDictionary = new InputParametersDictionary(false, false, false, false);
-        SignsDictionaryService signsDictionaryService = new SignsDictionaryService(inputParametersDictionary);
+
 
         //when
-        List<Character> result = signsDictionaryService.getTableOfSigns();
+        SignsDictionaryService signsDictionaryService = new SignsDictionaryService(inputParametersDictionary);
 
         //then
-        Assert.assertArrayEquals(new int[]{0}, new int[]{result.size()});
+
     }
 }
